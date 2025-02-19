@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Columna Izquierda Responsiva</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            height: 100vh; /* Altura completa de la pantalla */
+        }
+        .col-izquierda {
+            background-color: #4CAF50; /* Color de fondo */
+            width: 250px; /* Ancho fijo para la columna izquierda */
+            padding: 20px;
+            box-sizing: border-box; /* Incluye padding en el ancho total */
+        }
+        .col-derecha {
+            flex-grow: 1; /* Toma el espacio restante */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+            }
+            .col-izquierda {
+                width: 100%; /* Ancho completo en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="col-izquierda">
+            <h2>Columna Izquierda</h2>
+            <p>Contenido de la columna izquierda.</p>
+        </div>
+        <div class="col-derecha">
+            <h2>Columna Derecha</h2>
+            <p>Contenido de la columna derecha.</p>
+        </div>
+    </div>
+</body>
+</html>
