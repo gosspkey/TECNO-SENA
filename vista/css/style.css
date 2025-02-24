@@ -6,7 +6,12 @@ container{
     display: flex;
     align-items: center;
 }
-
+.container-col{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    transition: all 0.3s ease; /* Transición suave */
+}
 nav {
     padding-right: 30px;
     padding: 0px;
@@ -64,18 +69,6 @@ label{
     font-weight: 600;
     margin-bottom: 15px;
     margin-left: 30px;
-}
-
-input{
-    padding: 17px 25px;
-    max-width: 85%;
-    border-radius: 25px;
-    margin-bottom: 20px;
-    background-color:rgb(179, 222, 227) ;
-    border: 2px solid rgb(157, 186, 197) ;
-    color: rgb(1, 20, 16);
-    outline: none;
-    margin-left:2%
 }
 
 input::placeholder{
@@ -188,5 +181,84 @@ footer {
     color:  #4b8413;
     text-align: center;
     padding: 20px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+h2{
+    text-align: center;
+    color: #4b8413;
+    padding: 10px;
+    margin: auto;
+}
+
+/*Buscador de contenido*/
+.search-container {
+    max-width: 800px;
+    margin: 50px auto;
+    position: relative;
+}
+.hidden {
+    display: none !important;
+}
+.search-results {
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    background: white;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+
+/*Tabla*/
+.col-eq {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    
+  }
+
+  .col-tab {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0px 12px rgba(0,0,0,0.175);
+  }
+
+  .col-tab img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .col-tab h3 {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  .col-tab p {
+    margin-top: 5px;
+    font-size: 16px;
+  }
+
+  .col-tab .price {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .col-tab .button {
+    display: inline-block;
+    background-color:#4b8413;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .col-eq {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
