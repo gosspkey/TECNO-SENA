@@ -53,6 +53,9 @@
                     <option value="opcion4">P.P.T</option>
                 </select>
 
+                <label for="nidentificacion" class="mr-2">Numero de documento:</label>
+                <input type="text" class="form-control" name="nidentificacion" id="nidentificacion" placeholder="Ingrese su numero del documento" required>
+
                 <label for="telefono" class="mr-2">Telefono:</label>
                 <input type="text" class="form-control" name="txtelefono" id="txtelefono" placeholder="Ingrese numero de contacto" required>
                 
@@ -128,15 +131,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        function vercontra(id, element) {
-            const passwordInput = document.getElementById(id);
-            const passwordType = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', passwordType);
-            // Cambiar el símbolo de la lectura de la contraseña
-            element.textContent = passwordType === 'password' ? '👁️‍🗨️' : '👀';
-        }
-    </script>
+    <script src="estilos.js"></script>
 </body>
 </html>
 

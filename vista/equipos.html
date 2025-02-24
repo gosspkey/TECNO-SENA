@@ -6,6 +6,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css"> 
     <title>TECNO-SENA</title>
+    <script src="https://kit.fontawesome.com/2468bb71a3.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -19,58 +29,141 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/vista/registro.html">Registrarse</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#">Configuración</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Ayuda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="inicio.html">Inicio</a>
                     </li>
                 </ul>
             </div>
-        </div>
     </nav>
-
-    <h2 class="titulo-e"> EQUIPOS DISPONIBLES sapa</h2>
-    <footer class="mt-5 border-top">
-        <div class="container text-center py-4 col-md-2">
-            <h2>Tecno-Sena</h2>
-            <p>Atención al cliente:<br>Lunes a viernes de 8:00am a 5:00pm</p>
-        </div>
-        <div class="container d-flex justify-content-around py-3">
-            <div class="iconos dire col-md-2">
-                <p>
-                    <strong>Dirección:</strong>  
-                    <br> 
-                    #31-42 Calle 15, Bogotá
-                </p>
+    <h2>Equipos disponibles</h2>
+    <div class="container">
+        <div class="search-container">
+            <div class="container">
+                <div class="search-container">
+                    <!-- Barra de búsqueda -->
+                    <div class="input-group mb-4 shadow">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Buscar..." 
+                               aria-label="Buscar" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </div>
+            
+                    <!-- Contenedor de resultados -->
+                    <div id="resultsContainer" class="row g-4 search-results hidden">
+                        <!-- Elementos a buscar -->
+                        <div class="col-md-12 search-card">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">COMPUTADORES</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-md-12 search-card">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">CAMARAS</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="col-md-12 search-card">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">EQUIPOS DE SONIDO</h5>
+                                    <p class="card-text"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Mensaje cuando no hay resultados -->
+                    <div id="noResults" class="alert alert-warning mt-4 hidden" role="alert">
+                        No se encontraron resultados!
+                    </div>
+                </div>
             </div>
-            <div class="iconos tel col-md-2">
-                <p> 
-                    <strong>Telefono:</strong> 
-                    <br> 
-                    +573222175535
-                </p>
-            </div>
-            <div class="iconos ema col-md-2">
-                <p>
-                    <strong>Correo:</strong>
-                    <br>
-                    equipoceni@soy.sena.edu.co
-                </p>
-            </div>
+            
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                const searchInput = document.getElementById('searchInput');
+                const searchContainer = document.querySelector('.search-container');
+                const resultsContainer = document.getElementById('resultsContainer');
+                const noResults = document.getElementById('noResults');
+                const searchCards = document.querySelectorAll('.search-card');
+            
+                // Mostrar resultados al hacer clic en el input
+                searchInput.addEventListener('focus', () => {
+                    resultsContainer.classList.remove('hidden');
+                    doSearch();
+                });
+            
+                // Ocultar resultados al hacer clic fuera
+                document.addEventListener('click', (e) => {
+                    if (!searchContainer.contains(e.target)) {
+                        resultsContainer.classList.add('hidden');
+                        noResults.classList.add('hidden');
+                    }
+                });
+            
+                // Función de búsqueda
+                const doSearch = () => {
+                    const searchTerm = searchInput.value.trim().toLowerCase();
+                    let visibleItems = 0;
+            
+                    searchCards.forEach(card => {
+                        const text = card.textContent.toLowerCase();
+                        if(text.includes(searchTerm)) {
+                            card.classList.remove('hidden');
+                            visibleItems++;
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+            
+                    // Mostrar u ocultar mensaje de no resultados
+                    if(visibleItems === 0 && searchTerm !== '') {
+                        noResults.classList.remove('hidden');
+                        resultsContainer.classList.add('hidden');
+                    } else {
+                        noResults.classList.add('hidden');
+                        resultsContainer.classList.remove('hidden');
+                    }
+                };
+            
+                // Escuchar entrada de búsqueda
+                searchInput.addEventListener('input', doSearch);
+            });
+            </script>
+    </div>
+    <div class="col-eq">
+        <div class="col-tab">
+          <img src="img/computador.jpg" alt="Computador" width="300px">
+          <h3>Computador</h3>
+          <p>Descripción</p>
+          <a href="#" class="button">Reservar</a>
         </div>
-        <div class="text-center py-3 col-md-2">
-            <img src="img/logo naranja.png" alt="Logo">
+        <div class="col-tab">
+          <img src="img/camara.avif" alt=""width="300px">
+          <h3>Cámara</h3>
+          <p>Descripción</p>
+          <a href="#" class="button">Reservar</a>
         </div>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+        <div class="col-tab">
+          <img src="img/microfono.webp" alt="" width="300px">
+          <h3>Equipo de Sonido</h3>
+          <p>Descripción</p>
+          <a href="#" class="button">Reservar</a>
+        </div>
+      </div>
 </html>
