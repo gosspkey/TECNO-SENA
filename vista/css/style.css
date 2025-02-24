@@ -203,7 +203,7 @@ footer {
 }
 
 .background-image {
-    background-image: url('/img/sena-aprendizaje-1.jpg');
+    background-image: url('/vista/img/sena-aprendizaje-1.jpg');
     background-size: cover; /* Ajusta el tamaño de la imagen para que ocupe todo el contenedor */
     background-position: center; /* Centra la imagen */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
