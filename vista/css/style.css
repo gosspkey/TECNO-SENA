@@ -71,6 +71,18 @@ label{
     margin-left: 30px;
 }
 
+input{
+    padding: 17px 25px;
+    max-width: 85%;
+    border-radius: 25px;
+    margin-bottom: 20px;
+    background-color:rgb(179, 222, 227) ;
+    border: 2px solid rgb(157, 186, 197) ;
+    color: rgb(1, 20, 16);
+    outline: none;
+    margin-left:2%
+}
+
 input::placeholder{
     color: rgb(97, 114, 120);
 }
@@ -183,6 +195,61 @@ footer {
     padding: 20px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.background {
+    position: relative;
+    height: 500px; /* Ajusta la altura del contenedor */
+    margin-top: 20px; /* Añade un margen superior para separar del nav */
+}
+
+.background-image {
+    background-image: url('/img/sena-aprendizaje-1.jpg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para que ocupe todo el contenedor */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    height: 100%; /* Ocupa toda la altura del contenedor */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: filter 0.3s ease; /* Añade una transición suave */
+}
+
+.background-image:hover {
+    filter: blur(3px); /* Aplica el desenfoque cuando el mouse está sobre el contenedor */
+
+}
+
+.custom-button {
+    position: relative;
+    color: #5EA617; /* Color del texto del botón */
+    background-color: #f7f9fa; /* Color de fondo del botón */
+    margin-top: 210px; /* Ajusta el margen superior para colocar el botón dentro de la imagen */
+    z-index: 1; /* Asegura que el botón esté por encima de la imagen desenfocada */
+    border-color: white; /* Color del borde inicial del botón */
+    padding: 10px 70px;
+    border-radius: 20PX;
+    text-align: center;
+}
+
+.custom-button:hover {
+    background-color: #5EA617; /* Color de fondo del botón cuando se pone el mouse sobre él */
+    border-color: #5EA617; /* Color del borde del botón cuando se pone el mouse sobre él */
+    color: white; /* Color del texto del botón cuando se pone el mouse sobre él */
+}
+
+.custom-button:active {
+    background-color: #5EA617; /* Color de fondo del botón cuando se hace clic */
+    border-color: #5EA617; /* Color del borde del botón cuando se hace clic */
+    color: white; /* Color del texto del botón cuando se hace clic */
+}
+
+.text-center{
+    width: 100%;
+height: auto;
+    text-align: center;
+}
+
 h2{
     text-align: center;
     color: #4b8413;
