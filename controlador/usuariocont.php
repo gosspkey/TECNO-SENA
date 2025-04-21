@@ -46,7 +46,7 @@ $datos = verificarUsuario($db, 'Usuario', $usuario, $contra);
 if ($datos) {
     $_SESSION['rol'] = 'aprendiz';
     $_SESSION['Idusu'] = $datos['Idusu'];
-    header("Location: /vista/principal/equipos.html");
+    header("Location: aprendiz/../../vista/principal/equipos.html");
     exit();
 }
 
@@ -55,7 +55,7 @@ $datos = verificarUsuario($db, 'Instructores', $usuario, $contra);
 if ($datos) {
     $_SESSION['rol'] = 'instructor';
     $_SESSION['Idins'] = $datos['Idins'];
-    header("Location: /vista/principal/equiposins.html");
+    header("Location: instructor/../../vista/principal/equiposins.html");
     exit();
 }
 
@@ -64,7 +64,7 @@ $datos = verificarUsuario($db, 'Administradores', $usuario, $contra);
 if ($datos) {
     $_SESSION['rol'] = 'admin';
     $_SESSION['Idad'] = $datos['Idad'];
-    header("Location: /vista/principal/admin.html");
+    header("Location: admin/../../vista/principal/admin.html");
     exit();
 }
 

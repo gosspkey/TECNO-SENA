@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Error: Los encabezados ya se enviaron. No se puede redirigir.";
             exit();
         }
-        header("Location: /vista/principal/tablainstu.php");
+        header("Location: tablainstu.php");
         exit();
     } else {
         echo $resultado; // Muestra el mensaje de error

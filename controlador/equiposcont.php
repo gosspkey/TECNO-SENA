@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':equipo', $equipo);
 
         if ($stmt->execute()) {
-            header("Location: /vista/principal/admin.html?mensaje=$tipoEquipo registrado correctamente");
+            header("Location: admin/../../vista/principal/admin.html?mensaje=$tipoEquipo registrado correctamente");
             exit;
         } else {
             echo "Error al registrar el equipo: " . implode(" - ", $stmt->errorInfo());

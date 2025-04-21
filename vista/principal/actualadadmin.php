@@ -41,7 +41,7 @@ ob_start(); // Inicia el búfer de salida
         $resultado = $adminObj->actualizar();
     
         if ($resultado) {
-            header("Location: /vista/principal/tablaadminis.php");
+            header("Location: tablaadminis.php");
             exit;
         } else {
             echo "Error al actualizar.";

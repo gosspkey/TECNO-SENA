@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $resultado = $adminObj->registrar($nombre, $apellido, $identi, $documento, $correo, $usuario, $contraseña);
 
     if ($resultado === "Administrador registrado correctamente.") {
-        header("Location: /vista/iniciosesion.html");
+        header("Location: ../vista/principal/admin.html");
         exit();
     } else {
         echo $resultado;

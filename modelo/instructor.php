@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $resultado = $instructorObj->registrar($nombre, $apellido, $identi, $documento, $correo, $usuario, $contraseña);
 
     if ($resultado === "Instructor registrado con éxito.") {
-        header("Location: /vista/principal/admin.html");
+        header("Location: ../vista/principal/admin.html");
         exit();
     } else {
         echo $resultado;
