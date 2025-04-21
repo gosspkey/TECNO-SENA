@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">  
+    <title>Registro de Equipos de Sonido</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../img/SENA-TECNO.png" alt="Logo" width="400px" style="position: relative; left: -20px;" class="img-fluid d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="../principal/equipos.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="../principal/centro de ayuda.html">Ayuda</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <form action="../../controlador/equiposcont.php" method="POST" class="container">
+        <h2 class="titulo text-center"> <strong>Registra Equipos de sonido</strong></h2>  
+        <div class="row">
+            <div class="col-md-6">
+                <img src="../img/consolaUSD.png" class="img-fluid" alt="" width="300px">
+            </div>
+            <div class="container mt-5 col-md-6 form1 form-group">
+                <label for="placa" class="mr-2">Placa:</label>
+                <input type="text" class="form-control" id="placa" name="placa" placeholder="Ingrese el número de placa" required>
+
+                <label for="descripcion" class="mr-2">Descripción:</label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese una descripción" required>
+
+                <label for="tripodes" class="mr-2">¿Qué equipo deseas registrar?</label>
+                <style>
+                    #portatil {
+                        max-width: 460px;
+                    }
+                </style>
+                <select name="sonido" id="sonido" class="form-control" required>
+                    <option value="BEHRINGER">BEHRINGER</option>
+                    <option value="PRO DJ">PRO DJ</option>
+
+                </select>
+
+                <!-- Campo oculto para asegurar que `tipoEquipo` se envía correctamente -->
+                <input type="hidden" name="tipoEquipo" value="sonido">
+            </div>    
+        </div>
+
+        <div class="d-flex justify-content-center button-center">
+            <div class="button">
+                <button class="btnn btn-successs btninicio" type="submit">Registrar</button>
+            </div>
+            <div class="button">
+                <a href="../principal/admin.html">
+                    <button class="btnn btn-successs btninicio" type="button">Cancelar</button>
+                </a>
+            </div>
+        </div>
+        <br>
+    </form>
+
+    <footer class="mt-5 border-top">
+        <style>
+            footer {
+                background-color: #5EA617;
+                color: white;
+            }
+            footer a {
+                color: white;
+            }
+            footer p, footer h2, footer strong {
+                color: white !important;
+            }
+            nav, footer {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+            @media (max-width: 400px) {
+                .button-center {
+                    display: flex;
+                    flex-direction: column; /* Apila los botones verticalmente */
+                    align-items: center; /* Centra los botones horizontalmente */
+                }
+                .img-fluid-1 {
+                    max-width: 250px; /* Ajusta la imagen al 100% del contenedor */
+                }
+                nav, footer {
+                    margin: 0;
+                    padding: 0;
+                    height: 100%;
+                }
+                .titulo {
+                    margin-left: 5px;
+                    margin-right: 5px;
+                    text-align: center;
+                    margin-top: -15px;
+                }
+            }
+            .btninicio {
+                background-color: #5EA617;
+                border: none;
+                color: white;
+                margin-top: 10px;
+                margin: 5px;
+                padding: 10px 20px;
+            }
+            .img-fluid-1 {
+                width: 300px;
+            }
+            .titulo {
+                margin-top: -10px;
+            }
+        </style>
+        <div class="container text-center py-4 col-md-2 footer-container" style="margin-top: 2px;">
+            <img class="footer-logo"  src="../img/LOGO SENA-TECCNO.png" alt="Logo" width="600px">
+            <h2>Tecno-Sena</h2>
+            <p>Atención al cliente:<br>Lunes a viernes de 8:00am a 5:00pm</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showAlert() {
+            alert("Reserva realizada con éxito. Recuerde reclamarlo en menos de 10 minutos y llevar el carnet");
+            return true;
+        }
+    </script>
+</body>
+</html>

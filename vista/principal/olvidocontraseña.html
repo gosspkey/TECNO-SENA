@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css"> 
+    <title>TECNO-SENA</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../img/SENA-TECNO.png" alt="Logo" width="400px" style="position: relative; left: -20px;" class="d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="../Proyecto/vista/registro.html">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3" href="../Proyecto/vista/principal/centro de ayuda.html">Ayuda</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <form action="" class="container">
+        <h2 class="titulo text-center"> <strong>¿Olvidaste tu contraseña?</strong></h2>
+        <div class="row">
+            <div class="container mt-5 ml-auto col-md-6 form1 form-group">
+                <label for="user" class="mr-2">Correo electronico:</label>
+                <input type="text" class="form-control ml-auto" id="correocontra" name="correocontra" placeholder="Ingrese su correo electronico" required>
+
+                <div class="text-center ml-auto" style="position: relative; left: 30px;"  >
+                    <a>
+                    <button  style="position: relative; top: -100px"   id="boc" class="btnn btn-successs customm-button" type="submit" class="inv" >Recuperar contraseña</button>
+                </a>
+                </div>
+                <script>
+                    var boton = document.getElementById('boc');
+                    boton.addEventListener('click', function(){
+                        alert('Enviamos un mensaje a tu correo para que puedas recuperar contraseña');
+                    });
+                </script>
+            </div>    
+
+            <div class="col-md-6">
+                <img src="../img/olvido-de-contraseña.png" alt="" width="300px">
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="formtxt col-md-4"  style="position: relative; left: 93px;">
+                    <a  class="texttext"  href="../../vista/registro.html"  style="position: relative; top: -100px"  >¿Aun no tienes una cuenta? <br> <strong>REGISTRAR</strong></a>
+                </div>
+                <div class="formtxt col-md-6 ml-auto">
+                    <a href="#">Terminos y condiciones</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <footer class="mt-5 border-top">
+        <style>
+            footer {
+                background-color: #5EA617;
+                color: white;
+            }
+            footer a {
+                color: white;
+            }
+            footer p, footer h2, footer strong {
+                color: white !important;
+            }
+        </style>
+        <div class="container text-center py-4 col-md-2 footer-container" style="margin-top: 2px;">
+            <img class="footer-logo"  src="../img/LOGO SENA-TECCNO.png" alt="Logo" width="600px">
+            <h2>Tecno-Sena</h2>
+            <p>Atención al cliente:<br>Lunes a viernes de 8:00am a 5:00pm</p>
+        </div>
+        <div class="container d-flex justify-content-around py-3">
+            <div class="iconos dire col-md-2">
+                <p>
+                    <strong>Dirección:</strong>  
+                    <br> 
+                    #31-42 Calle 15, Bogotá
+                </p>
+            </div>
+            <div class="iconos tel col-md-2">
+                <p> 
+                    <strong>Telefono:</strong> 
+                    <br> 
+                    +573222175535
+                </p>
+            </div>
+            <div class="iconos ema col-md-2">
+                <p>
+                    <strong>Correo:</strong>
+                    <br>
+                    equipoceni@soy.sena.edu.co
+                </p>
+            </div>
+        </div>
+            <div class="iconos ema col-md-2">
+    </div>
+    </footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

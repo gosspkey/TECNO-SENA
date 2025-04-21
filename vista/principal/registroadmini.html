@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css"> 
+    <title>TECNO-SENA</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="../img/SENA-TECNO.png" alt="Logo" width="400px" style="position: relative; left: -20px;" class="d-inline-block align-top">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+    <form action="../../modelo/administrador.php" method="POST" class="container">
+        <h2 class="titulo text-center"> <strong>Registro Administrador</strong></h2>
+        <div class="row">
+            <div class="container mt-5 col-md-6 form1 form-group">
+                <label for="nombre" class="mr-2">Nombre(s):</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+
+                <label for="apellido" class="mr-2">Apellidos:</label>
+                <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingrese sus apellidos" required>
+
+                <label for="identi" class="mr-2">Tipo de documento:</label>
+                <select name="identi" id="identi" class="form-control">
+                    <option value="C.C">C.C</option>
+                    <option value="T.I">T.I</option>
+                    <option value="C.E">C.E</option>
+                    <option value="P.P.T">P.P.T</option>
+                </select>
+
+                <label for="documento" class="mr-2">Numero de documento:</label>
+                <input type="text" class="form-control" name="documento" id="documento" placeholder="Ingrese su numero del documento" required>
+
+               
+                
+                <label for="correo" class="mr-2">Correo electronico:</label>
+                <input type="email" class="form-control" name="correo" id="correo" placeholder="Ingrese correo" required>
+            </div>
+
+            <div class="container mt-5 col-md-6 form1 form-group">
+
+                <label for="usuario" class="mr-2">Nombre de usuario:</label>
+                <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Ingrese un usuario" required>
+
+                <label for="contraseña" class="mr-2">Contraseña:</label>
+                <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="Ingrese su contraseña" required>
+                <span class="vercontra" onclick="vercontra('contraseña', this)">👁️‍🗨️</span>
+                <script>
+                    function vercontra(id, element) {
+                        const passwordInput = document.getElementById(id);
+                        const passwordType = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                        passwordInput.setAttribute('type', passwordType);
+                        // Cambiar el símbolo de la lectura de la contraseña
+                        element.textContent = passwordType === 'password' ? '👁️‍🗨️' : '👀';
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button class="btnn btn-successs customm-button btninicio" type="submit">Registrarse</button>
+        </div>
+        <br><br>
+        <div class="container">
+            <div class="row">
+                <div class="formtxt">
+                    <a href="../iniciosesion.html" class="links mx-2">¿Ya tienes una cuenta? <br> <strong>Iniciar sesion</strong></a>
+                </div>
+                <div class="formtxt col-md-4">
+                    <a href="#" class="links mx-2">Terminos y condiciones</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <footer class="mt-5 border-top">
+        <style>
+            footer {
+                background-color: #5EA617;
+                color: white;
+            }
+            footer a {
+                color: white;
+            }
+            footer p, footer h2, footer strong {
+                color: white !important;
+            }
+            .btninicio {
+                background-color: #5EA617;
+                border: none;
+                color: white;
+                margin-top: 10px;
+                font-size: 14px;
+            }
+        </style>
+        <div class="container text-center py-4 col-md-2 footer-container" style="margin-top: 2px;">
+            <img class="footer-logo"  src="../img/LOGO SENA-TECCNO.png" alt="Logo" width="600px">
+            <h2>Tecno-Sena</h2>
+            <p>Atención al cliente:<br>Lunes a viernes de 8:00am a 5:00pm</p>
+        </div>
+        <div class="container d-flex justify-content-around py-3">
+            <div class="iconos dire col-md-2">
+                <p>
+                    <strong>Dirección:</strong>  
+                    <br> 
+                    #31-42 Calle 15, Bogotá
+                </p>
+            </div>
+            <div class="iconos tel col-md-2">
+                <p> 
+                    <strong>Telefono:</strong> 
+                    <br> 
+                    +573222175535
+                </p>
+            </div>
+            <div class="iconos ema col-md-2">
+                <p>
+                    <strong>Correo:</strong>
+                    <br>
+                    equipoceni@soy.sena.edu.co
+                </p>
+            </div>
+        </div>
+            <div class="iconos ema col-md-2">
+    </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="estilos.js"></script>
+</body>
+</html>
