@@ -38,12 +38,55 @@ CREATE TABLE Administradores (
     Contraseña VARCHAR(255) NOT NULL
 );
 
-select * from administradores;
-select * from reservasins;
+
+CREATE TABLE Reservas (
+    IDReserva INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    IDUsuario INT NOT NULL,
+    CodTableta INT NULL,
+    CodPortatil INT NULL,
+    CodCamara INT NULL,
+    CodLuces INT NULL,
+    CodProyector INT NULL,
+    CodTripode INT NULL,
+    CodSonido INT NULL,
+    Fichausu VARCHAR(100) NOT NULL,
+    FechaReserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (IDUsuario) REFERENCES Usuario(Idusu) ON DELETE CASCADE
+);
+
+ALTER TABLE Reservas 
+ADD CONSTRAINT fk_tableta FOREIGN KEY (CodTableta) REFERENCES Tabletas(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_portatil FOREIGN KEY (CodPortatil) REFERENCES Portatil(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_camara FOREIGN KEY (CodCamara) REFERENCES Camaras(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_luces FOREIGN KEY (CodLuces) REFERENCES Luces(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_proyector FOREIGN KEY (CodProyector) REFERENCES Proyectores(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_tripode FOREIGN KEY (CodTripode) REFERENCES Tripodes(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_sonido FOREIGN KEY (CodSonido) REFERENCES Sonido(CodEquipo) ON DELETE SET NULL;
 
 
-INSERT INTO Administradores (Nombread, Apellidoad, Identificacionad, Documentoad, Emailad, Usuario, Contraseña) 
-VALUES ('Juan', 'Pérez', 'C.C', '12345678', 'juan.perez@email.com', 'juanperez', SHA2('contraseña_segura', 256));
+CREATE TABLE Reservasins (
+    IDReserva INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    Idins INT NOT NULL, -- Relacionado con la tabla Instructores
+    CodTableta INT NULL,
+    CodPortatil INT NULL,
+    CodCamara INT NULL,
+    CodLuces INT NULL,
+    CodProyector INT NULL,
+    CodTripode INT NULL,
+    CodSonido INT NULL,
+    FechaReserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (Idins) REFERENCES Instructores(Idins) ON DELETE CASCADE
+);
+
+ALTER TABLE Reservasins
+ADD CONSTRAINT fk_tableta_inst FOREIGN KEY (CodTableta) REFERENCES Tabletas(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_portatil_inst FOREIGN KEY (CodPortatil) REFERENCES Portatil(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_camara_inst FOREIGN KEY (CodCamara) REFERENCES Camaras(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_luces_inst FOREIGN KEY (CodLuces) REFERENCES Luces(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_proyector_inst FOREIGN KEY (CodProyector) REFERENCES Proyectores(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_tripode_inst FOREIGN KEY (CodTripode) REFERENCES Tripodes(CodEquipo) ON DELETE SET NULL,
+ADD CONSTRAINT fk_sonido_inst FOREIGN KEY (CodSonido) REFERENCES Sonido(CodEquipo) ON DELETE SET NULL;
+
 
 CREATE TABLE Portatil (
     CodEquipo INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -108,51 +151,3 @@ Usua int unique,
 IDReserva INT NULL,
     FOREIGN KEY (IDReserva) REFERENCES Reservas(IDReserva) ON DELETE SET NULL
 );
-
-CREATE TABLE Reservas (
-    IDReserva INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    IDUsuario INT NOT NULL,
-    CodTableta INT NULL,
-    CodPortatil INT NULL,
-    CodCamara INT NULL,
-    CodLuces INT NULL,
-    CodProyector INT NULL,
-    CodTripode INT NULL,
-    CodSonido INT NULL,
-    Fichausu VARCHAR(100) NOT NULL,
-    FechaReserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (IDUsuario) REFERENCES Usuario(Idusu) ON DELETE CASCADE
-);
-
-ALTER TABLE Reservas 
-ADD CONSTRAINT fk_tableta FOREIGN KEY (CodTableta) REFERENCES Tabletas(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_portatil FOREIGN KEY (CodPortatil) REFERENCES Portatil(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_camara FOREIGN KEY (CodCamara) REFERENCES Camaras(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_luces FOREIGN KEY (CodLuces) REFERENCES Luces(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_proyector FOREIGN KEY (CodProyector) REFERENCES Proyectores(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_tripode FOREIGN KEY (CodTripode) REFERENCES Tripodes(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_sonido FOREIGN KEY (CodSonido) REFERENCES Sonido(CodEquipo) ON DELETE SET NULL;
-
-
-CREATE TABLE Reservasins (
-    IDReserva INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    Idins INT NOT NULL, -- Relacionado con la tabla Instructores
-    CodTableta INT NULL,
-    CodPortatil INT NULL,
-    CodCamara INT NULL,
-    CodLuces INT NULL,
-    CodProyector INT NULL,
-    CodTripode INT NULL,
-    CodSonido INT NULL,
-    FechaReserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (Idins) REFERENCES Instructores(Idins) ON DELETE CASCADE
-);
-
-ALTER TABLE Reservasins
-ADD CONSTRAINT fk_tableta_inst FOREIGN KEY (CodTableta) REFERENCES Tabletas(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_portatil_inst FOREIGN KEY (CodPortatil) REFERENCES Portatil(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_camara_inst FOREIGN KEY (CodCamara) REFERENCES Camaras(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_luces_inst FOREIGN KEY (CodLuces) REFERENCES Luces(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_proyector_inst FOREIGN KEY (CodProyector) REFERENCES Proyectores(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_tripode_inst FOREIGN KEY (CodTripode) REFERENCES Tripodes(CodEquipo) ON DELETE SET NULL,
-ADD CONSTRAINT fk_sonido_inst FOREIGN KEY (CodSonido) REFERENCES Sonido(CodEquipo) ON DELETE SET NULL;
