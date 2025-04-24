@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ejecutar la consulta y verificar errores
     if ($stmt->execute()) {
         $idReserva = $db->lastInsertId();
-        header("Location: /vista/principal/reservaexitins.php?id=" . $idReserva);
+        header("Location: ../vista/principal/reservaexitins.php?id=" . $idReserva);
         exit;
     } else {
         echo "Error al registrar la reserva: " . implode(" - ", $stmt->errorInfo());

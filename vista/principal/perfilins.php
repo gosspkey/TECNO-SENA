@@ -46,19 +46,16 @@ if (!isset($_SESSION['Idins'])) {
 
 require_once '../../modelo/instructor.php'; // Asegúrate de tener este archivo
 
-// Conexión
-$host = "tecnosena.mysql.database.azure.com";
-$db_name = "proyecto";
-$user_name = "karen";
-$password = "12345678K&";
-$ssl_cert = __DIR__. "/confi/DigiCertGlobalRootCA.crt.pem";
+// Conexión a la base de datos
+include_once '../../modelo/usuario.php';
+$host = "localhost";
+$dbname = "proyecto";
+$username = "root";
+$password = "";
 
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$db_name;charset=utf8", $user_name, $password, [
-        PDO::MYSQL_ATTR_SSL_CA => $ssl_cert,
-        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ]);
+    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
 }

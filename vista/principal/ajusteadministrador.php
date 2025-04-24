@@ -41,7 +41,7 @@
         $resultado = $adminObj->actualizar();
     
         if ($resultado) {
-            header("Location: /vista/principal/perfiladm.php");
+            header("Location: perfiladm.php");
             exit;
         } else {
             echo "Error al actualizar.";
@@ -112,26 +112,35 @@
                 <input type="text" class="form-control" id="usuario" name="usuario" value="<?= htmlspecialchars($adminData['Usuario']) ?>" required>
 
                 
-        </div>
-
+                </div>
         <div class="text-center mt-4">
             <button class="btn btn-success custom-button" type="submit">Guardar cambios</button>
+        </div>        
+            </div>
         </div>
     </form>
 
     <footer class="mt-5 border-top">
         <style>
-            footer { background-color: #5EA617; color: white; }
-            footer a, footer p, footer h2, footer strong { color: white !important; }
+            footer {
+                background-color: #5EA617;
+                color: white;
+            }
+            footer a {
+                color: white;
+            }
+            footer p, footer h2, footer strong {
+                color: white !important;
+            }
         </style>
-        <div class="container text-center py-4 col-md-2 footer-container">
-            <img class="footer-logo" src="../img/tecno_sena_logo_blanco.PNG" alt="Logo">
+       <div class="container text-center py-4 col-md-2 footer-container" style="margin-top: 2px;">
+            <img class="footer-logo" src="../img/tecno sena logo blanco.PNG" alt="Logo">
             <h2>Tecno-Sena</h2>
             <p>Atención al cliente:<br>Lunes a viernes de 8:00am a 5:00pm</p>
         </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
@@ -142,36 +151,39 @@
 
 ob_start(); // Inicia el búfer de salida
 
-require_once('../../modelo/administrador.php');
+require_once('../../modelo/usuario.php');
 require_once('../../confi/conexion.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $database = new Database();
     $db = $database->getConnection();
-    $admin = new Administrador($db);
+    $usuario = new Usuario($db);
 
-    $admin->id = $_POST['Idad'];
-    $admin->nombre = $_POST['nombre'];
-    $admin->apellido = $_POST['apellido'];
-    $admin->identi = $_POST['identi'];
-    $admin->documento = $_POST['documento'];
-    $admin->email = $_POST['correo'];
-    $admin->usuario = $_POST['usuario'];
-
+    $usuario->id = $_POST['IDUsuario'];
+    $usuario->nombre = $_POST['nombre'];
+    $usuario->apellido = $_POST['apellido'];
+    $usuario->identi = $_POST['identi'];
+    $usuario->documento = $_POST['documento'];
+    $usuario->telefono = $_POST['telefono'];
+    $usuario->email = $_POST['correo'];
+    $usuario->ficha = $_POST['ficha'];
+    $usuario->usuario = $_POST['usuario'];
+    $usuario->rol = $_POST['rol'];
+    
     // Solo encriptamos la contraseña si ha sido cambiada
     if (!empty($_POST['contraseña'])) {
-        $admin->contra = password_hash($_POST['contraseña'], PASSWORD_BCRYPT);
+        $usuario->contra = password_hash($_POST['contraseña'], PASSWORD_BCRYPT);
     } else {
         // Mantenemos la contraseña existente si no se ha cambiado
-        $data = $admin->adminuno();
+        $data = $usuario->Usuuno();
         $fila = $data->fetch(PDO::FETCH_ASSOC);
-        $admin->contra = $fila['Contraseña'];
+        $usuario->contra = $fila['Contraseña'];
     }
 
-    if ($admin->actualizar()) {
-        echo "Administrador actualizado correctamente.";
+    if ($usuario->actualizarapr()) {
+        echo "Usuario actualizado correctamente.";
     } else {
-        echo "Error al actualizar el administrador.";
+        echo "Error al actualizar el usuario.";
     }
 }
 

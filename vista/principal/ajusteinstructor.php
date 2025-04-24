@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $resultado = $instructorObj->actualizarins();
     
     if ($resultado) {
-        header("Location: /vista/principal/perfilins.php");
+        header("Location: perfilins.php");
         exit;
     } else {
         echo "Error al actualizar.";

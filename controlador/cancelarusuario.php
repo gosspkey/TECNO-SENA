@@ -5,7 +5,7 @@ require_once('../confi/conexion.php');
 
 // Verificar que el ID de la reserva se ha recibido correctamente
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header("Location: /vista/principal/equipos.html?mensaje=Error: ID de reserva no proporcionado.");
+    header("Location: ../vista/principal/equipos.html?mensaje=Error: ID de reserva no proporcionado.");
     exit();
 }
 
@@ -14,7 +14,7 @@ $idReserva = intval($_GET['id']); // Asegurar que el ID sea un número entero v�
 // Iniciar sesión y verificar que el usuario esté autenticado
 session_start();
 if (!isset($_SESSION['Idusu'])) {
-    header("Location: /vista/principal/equipos.html?mensaje=No has iniciado sesión.");
+    header("Location: ../vista/principal/equipos.html?mensaje=No has iniciado sesión.");
     exit();
 }
 var_dump($idReserva, $_SESSION['Idusu']);
@@ -33,7 +33,7 @@ $stmt->execute();
 
 // Depuración: Verificar que la consulta trae resultados
 if ($stmt->rowCount() === 0) {
-    header("Location: /vista/principal/equipos.html?mensaje=No tienes permiso para cancelar esta reserva.");
+    header("Location: ../vista/principal/equipos.html?mensaje=No tienes permiso para cancelar esta reserva.");
     exit();
 }
 
@@ -43,9 +43,9 @@ $stmtDelete = $db->prepare($queryDelete);
 $stmtDelete->bindParam(':idReserva', $idReserva, PDO::PARAM_INT);
 
 if ($stmtDelete->execute()) {
-    header("Location: /vista/principal/equipos.html?mensaje=Reserva cancelada correctamente.");
+    header("Location: ../vista/principal/equipos.html?mensaje=Reserva cancelada correctamente.");
 } else {
-    header("Location: /vista/principal/equipos.html?mensaje=Error al cancelar la reserva.");
+    header("Location: ../vista/principal/equipos.html?mensaje=Error al cancelar la reserva.");
 }
 
 

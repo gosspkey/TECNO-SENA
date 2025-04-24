@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->execute()) {
         $idReserva = $db->lastInsertId();
         // Redirigir a la pagina de confirmación 
-        header("Location: /vista/principal/reservaexitosa.php?id=" . $idReserva);
+        header("Location: ../vista/principal/reservaexitosa.php?id=" . $idReserva);
         exit;
 
     } else {

@@ -167,7 +167,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "Error: Los encabezados ya se enviaron. No se puede redirigir.";
             exit();
         }
-        header("Location: ../../vista/iniciosesion.html");
+        header("Location: ../vista/iniciosesion.html");
         exit();
     } else {
         echo $resultado;

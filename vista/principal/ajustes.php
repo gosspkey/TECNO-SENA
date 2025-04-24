@@ -44,7 +44,7 @@
         $resultado = $usuarioObj->actualizar();
     
         if ($resultado) {
-            header("Location: /vista/principal/perfil.php");
+            header("Location: perfil.php");
             exit;
         } else {
             echo "Error al actualizar.";

@@ -16,58 +16,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Conexión a la base de datos
-    $host = "tecnosena.mysql.database.azure.com";
-    $db_name = "proyecto";
-    $user_name = "karen";
-    $password = "12345678K&";
-    $ssl_cert = "/home/site/wwwroot/confi/DigiCertGlobalRootCA.crt.pem";
-
-    if (!file_exists($ssl_cert)) {
-        die("El certificado SSL no se encontró en: $ssl_cert");
-    }
-    
+    $host = "localhost";
+    $dbname = "proyecto";
+    $username = "root";
+    $password = "";
 
     try {
-        $conn = new PDO(
-            "mysql:host=$host;dbname=$db_name;charset=utf8",
-            $user_name,
-            $password,
-            [
-                PDO::MYSQL_ATTR_SSL_CA => $ssl_cert,
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_EMULATE_PREPARES => false,
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
-            ]
-        );
+        $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Verificar la contraseña actual
+        $stmt = $conn->prepare("SELECT Contraseña FROM Usuario WHERE Idusu = :id");
+        $stmt->bindParam(':id', $_SESSION['Idusu'], PDO::PARAM_INT);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$user || !password_verify($contraactual, $user['Contraseña'])) {
+            echo "La contraseña actual es incorrecta.";
+            exit;
+        }
+
+        // Actualizar la contraseña
+        $hashed_password = password_hash($contranueva, PASSWORD_DEFAULT);
+        $update_stmt = $conn->prepare("UPDATE Usuario SET Contraseña = :contranueva WHERE Idusu = :id");
+        $update_stmt->bindParam(':contranueva', $hashed_password, PDO::PARAM_STR);
+        $update_stmt->bindParam(':id', $_SESSION['id'], PDO::PARAM_INT);
+
+        if ($update_stmt->execute()) {
+            echo "Contraseña actualizada correctamente.";
+            header("Location: perfil.php");
+        } else {
+            echo "Error al actualizar la contraseña.";
+        }
     } catch (PDOException $e) {
-        die("Error de conexión: " . $e->getMessage());
-    }
-
-    $id_usuario = $_SESSION['Idusu'];
-
-    // Obtener contraseña actual de la base de datos
-    $stmt = $conn->prepare("SELECT Contraseña FROM Usuario WHERE Idusu = :id");
-    $stmt->bindParam(':id', $id_usuario, PDO::PARAM_INT);
-    $stmt->execute();
-    $user = $stmt->fetch();
-
-    if (!$user || !password_verify($contraactual, $user['Contraseña'])) {
-        echo "La contraseña actual es incorrecta.";
-        exit;
-    }
-
-    // Actualizar contraseña
-    $nueva_hash = password_hash($contranueva, PASSWORD_DEFAULT);
-    $update_stmt = $conn->prepare("UPDATE Usuario SET Contraseña = :contranueva WHERE Idusu = :id");
-    $update_stmt->bindParam(':contranueva', $nueva_hash, PDO::PARAM_STR);
-    $update_stmt->bindParam(':id', $id_usuario, PDO::PARAM_INT);
-
-    if ($update_stmt->execute()) {
-        header("Location: /vista/principal/perfil.php");
-        exit;
-    } else {
-        echo "Error al actualizar la contraseña.";
+        echo "Error de conexión: " . $e->getMessage();
     }
 }
 ?>
